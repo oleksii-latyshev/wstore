@@ -3,7 +3,7 @@
 	import { Button } from '$lib/components/ui/button';
 	import * as Table from '$lib/components/ui/table';
 
-	let showProduct = $state(true);
+	let showUsers = $state(true);
 
 	let { data } = $props();
 </script>
@@ -12,11 +12,11 @@
 	<div class="flex items-center justify-between space-y-2">
 		<h2 class="text-3xl font-bold capitalize tracking-tight">Users</h2>
 		<div class="flex items-center space-x-2">
-			<Input class="w-[150px] lg:w-[250px]" placeholder="Search products.." />
-			<Button href="/products/add">Add user</Button>
+			<Input class="w-[150px] lg:w-[250px]" placeholder="Search users.." />
+			<Button href="/users/add">Add user</Button>
 		</div>
 	</div>
-	{#if showProduct}
+	{#if showUsers}
 		<Table.Root>
 			<Table.Header>
 				<Table.Row>
@@ -47,7 +47,7 @@
 		<p
 			class="flex h-[70vh] w-full flex-col items-center justify-center gap-3 text-center text-3xl text-muted-foreground"
 		>
-			No products found <Button href="/products/add">Create new product</Button>
+			No users found <Button href="/users/add">Create new user</Button>
 		</p>
 	{/if}
 </div>
