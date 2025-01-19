@@ -12,3 +12,9 @@ export const productSchema = z.object({
 		.refine((file) => file.size < 1024 * 1024 * 2, { message: 'Image must be less than 2MB' })
 		.array()
 });
+
+export const categorySchema = z.object({
+	name: z.string().min(1),
+	description: z.string().min(3),
+	subcategories: z.string().min(1).array()
+});

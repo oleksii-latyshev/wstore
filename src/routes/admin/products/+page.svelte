@@ -11,7 +11,7 @@
 		<h2 class="text-3xl font-bold capitalize tracking-tight">Products</h2>
 		<div class="flex items-center space-x-2">
 			<Input class="w-[150px] lg:w-[250px]" placeholder="Search products.." />
-			<Button href="/products/add">Add product</Button>
+			<Button href="products/add">Add product</Button>
 		</div>
 	</div>
 	{#if showProduct}
