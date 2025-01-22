@@ -118,8 +118,8 @@
 					{/each}
 				</div>
 
-				<Button
-					>{#if $delayed}
+				<Button>
+					{#if $delayed}
 						<Loader2Icon class="size-6 animate-spin" />
 					{:else}
 						Add product
