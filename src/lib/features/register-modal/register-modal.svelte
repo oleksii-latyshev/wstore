@@ -2,30 +2,38 @@
 	import * as Dialog from '$lib/components/ui/dialog';
 	import * as Form from '$lib/components/ui/form';
 	import { Input } from '$lib/components/ui/input';
-	import { loginSchema } from '$lib/features/login-modal/schemas';
-	import { loginModalState } from '$lib/features/login-modal/states';
-	import { requestPasswordModalState } from '$lib/features/reset-password-modal/states';
+	import { registerSchema } from '$lib/features/register-modal/schemas';
+	import { registerModalState } from '$lib/features/register-modal/states';
 	import { Loader2Icon } from 'lucide-svelte';
-	import { defaults, filesProxy, superForm } from 'sveltekit-superforms';
+	import { defaults, superForm } from 'sveltekit-superforms';
 	import { zod } from 'sveltekit-superforms/adapters';
 
-	const form = superForm(defaults(zod(loginSchema)), {
-		validators: zod(loginSchema),
+	const form = superForm(defaults(zod(registerSchema)), {
+		validators: zod(registerSchema),
 		SPA: true
 	});
 
 	const { delayed, errors, enhance, form: formData } = form;
 </script>
 
-<Dialog.Root bind:open={loginModalState.isOpen}>
+<Dialog.Root bind:open={registerModalState.isOpen}>
 	<Dialog.Content class="w-full p-5">
 		<Dialog.Header class="mt-10">
-			<Dialog.Title>Login to your account</Dialog.Title>
+			<Dialog.Title>Create your account</Dialog.Title>
 			<Dialog.Description>
-				Enter your email and password to login, click login when you are ready
+				Enter your email and password to create an account, click login when you are ready
 			</Dialog.Description>
 		</Dialog.Header>
 		<form action="">
+			<Form.Field {form} name="name">
+				<Form.Control>
+					{#snippet children({ props })}
+						<Form.Label>Name</Form.Label>
+						<Input {...props} bind:value={$formData.name} />
+					{/snippet}
+				</Form.Control>
+				<Form.FieldErrors />
+			</Form.Field>
 			<Form.Field {form} name="email">
 				<Form.Control>
 					{#snippet children({ props })}
@@ -44,17 +52,17 @@
 				</Form.Control>
 				<Form.FieldErrors />
 			</Form.Field>
+			<Form.Field {form} name="confirmPassword">
+				<Form.Control>
+					{#snippet children({ props })}
+						<Form.Label>Confirm Password</Form.Label>
+						<Input {...props} bind:value={$formData.confirmPassword} />
+					{/snippet}
+				</Form.Control>
+				<Form.FieldErrors />
+			</Form.Field>
 
-			<button
-				type="button"
-				class="text-sm text-primary"
-				onclick={() => {
-					loginModalState.close();
-					requestPasswordModalState.open();
-				}}
-			>
-				forgot your password?
-			</button>
+			<button type="button" class="text-sm text-primary">forgot your password?</button>
 
 			<Form.Button class="mt-2 w-full">
 				{#if $delayed}

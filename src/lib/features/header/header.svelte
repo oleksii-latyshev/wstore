@@ -7,6 +7,11 @@
 	import { getAvatarFallbackText } from '$lib/features/header/helpers';
 	import LoginModal from '$lib/features/login-modal/login-modal.svelte';
 	import { loginModalState } from '$lib/features/login-modal/states';
+	import RegisterModal from '$lib/features/register-modal/register-modal.svelte';
+	import { registerModalState } from '$lib/features/register-modal/states';
+	import { mobileAuthModalState } from '$lib/features/mobile-auth-modal/states';
+	import MobileAuthModal from '$lib/features/mobile-auth-modal/mobile-auth-modal.svelte';
+	import ResetPasswordModal from '$lib/features/reset-password-modal/reset-password-modal.svelte';
 
 	let user = true;
 	let isAdmin = true;
@@ -61,9 +66,10 @@
 		{:else}
 			<div class="hidden items-center gap-2 md:flex">
 				<Button variant="ghost" onclick={loginModalState.open}>Login</Button>
-				<Button>Register</Button>
+				<Button onclick={registerModalState.open}>Register</Button>
 			</div>
 			<button
+				onclick={mobileAuthModalState.open}
 				class="flex size-10 items-center justify-center rounded-full hover:bg-secondary md:hidden"
 			>
 				<MenuIcon class="size-6" />
@@ -84,3 +90,6 @@
 </header>
 
 <LoginModal />
+<RegisterModal />
+<MobileAuthModal />
+<ResetPasswordModal />
