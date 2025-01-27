@@ -12,6 +12,8 @@
 	import { mobileAuthModalState } from '$lib/features/mobile-auth-modal/states';
 	import MobileAuthModal from '$lib/features/mobile-auth-modal/mobile-auth-modal.svelte';
 	import ResetPasswordModal from '$lib/features/reset-password-modal/reset-password-modal.svelte';
+	import { cartSheetState } from '$lib/features/cart-sheet/states';
+	import CartSheet from '$lib/features/cart-sheet/cart-sheet.svelte';
 
 	let user = true;
 	let isAdmin = true;
@@ -77,7 +79,7 @@
 		{/if}
 
 		{#if user}
-			<button class="relative inline-block h-fit w-fit">
+			<button class="relative inline-block h-fit w-fit" onclick={cartSheetState.open}>
 				<div
 					class="absolute -right-2 -top-2 flex size-5 items-center justify-center rounded-full bg-primary text-xs text-white"
 				>
@@ -93,3 +95,4 @@
 <RegisterModal />
 <MobileAuthModal />
 <ResetPasswordModal />
+<CartSheet />
