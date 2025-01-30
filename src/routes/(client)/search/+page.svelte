@@ -1,4 +1,5 @@
 <script lang="ts">
+	import ProductCard from '$lib/features/product-card/product-card.svelte';
 	import ProductFilters from '$lib/features/product-filters/product-filters.svelte';
 	import SearchBar from '$lib/features/search-bar/search-bar.svelte';
 
@@ -24,6 +25,11 @@
 			<div class="flex flex-1 flex-col gap-5">
 				<div class="space-y-3 md:space-y-5">
 					<h2 class="text-2xl font-bold md:text-4xl">What we have for you</h2>
+					<div class="grid grid-cols-1 gap-4">
+						{#each Array.from({ length: 5 }) as _, index (index)}
+							<ProductCard />
+						{/each}
+					</div>
 				</div>
 			</div>
 		{:else}
