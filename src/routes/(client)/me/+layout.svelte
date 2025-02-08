@@ -7,7 +7,7 @@
 
 	let { data, children }: { data: LayoutData; children: Snippet } = $props();
 
-	let path = $derived($page.url.pathname.split('/').slice(2, 3).toString());
+	let path = $derived($page.url.pathname);
 </script>
 
 <div class="mx-auto mt-10 w-full max-w-4xl px-3">
@@ -19,7 +19,7 @@
 			<a
 				{href}
 				class={cn(
-					'border-b-2 py-3 text-sm font-normal text-gray-700 sm:w-fit sm:border-b-0 md:text-base',
+					'border-b-2 py-3 text-sm font-normal capitalize text-gray-700 sm:w-fit sm:border-b-0 md:text-base',
 					{
 						'border-b-2 border-b-black font-bold text-black sm:border-b-2': path === href
 					}

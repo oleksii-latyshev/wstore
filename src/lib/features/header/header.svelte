@@ -3,7 +3,6 @@
 	import * as Avatar from '$lib/components/ui/avatar';
 	import { Button } from '$lib/components/ui/button';
 	import { MenuIcon, ShoppingCartIcon } from 'lucide-svelte';
-	import { getAvatarFallbackText } from '$lib/features/header/helpers';
 	import LoginModal from '$lib/features/login-modal/login-modal.svelte';
 	import { loginModalState } from '$lib/features/login-modal/states';
 	import RegisterModal from '$lib/features/register-modal/register-modal.svelte';
@@ -14,6 +13,7 @@
 	import { cartSheetState } from '$lib/features/cart-sheet/states';
 	import CartSheet from '$lib/features/cart-sheet/cart-sheet.svelte';
 	import { MENU_PAGES } from '$lib/constants';
+	import { getAvatarFallbackText } from '$lib/utils';
 
 	let user = true;
 	let isAdmin = true;
